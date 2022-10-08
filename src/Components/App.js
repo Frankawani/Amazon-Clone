@@ -31,7 +31,7 @@ function App() {
 
   return (
     <Router>
-      <div className="app">
+      <div className="appp">
         {" "}
         <Routes>
           <Route path="/" element={<Start />} />
