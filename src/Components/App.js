@@ -1,12 +1,15 @@
 import "../Css/App.css";
-import Header from "./Header";
-import Home from "./Home";
-import Checkout from "./Checkout";
+
 import Login from "./Login";
 import { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { auth } from "../firebase";
 import { useStateValue } from "../StateProvider";
+import Test from "./Test";
+import SplashScreen from "./SplashScreen";
+import CreateAccount from "./CreateAccount";
+import Start from "./Start";
+import Home from "./Home";
 
 function App() {
   const [{}, dispatch] = useStateValue();
@@ -31,27 +34,12 @@ function App() {
       <div className="app">
         {" "}
         <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <Header />
-                <Home />
-              </>
-            }
-          />
+          <Route path="/" element={<Start />} />
+          <Route path="/home" element={<Home />} />
 
-          <Route
-            path="/checkout"
-            element={
-              <>
-                <Header />
-                <Checkout />
-              </>
-            }
-          />
+          <Route path="/createaccount" element={<Login />} />
 
-          <Route path="/Login" element={<Login />} />
+          <Route path="/splashscreen" element={<SplashScreen />} />
         </Routes>
       </div>
     </Router>

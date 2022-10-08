@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../Css/Login.css";
 import { auth } from "../firebase";
+import BackButtons from "./BackButtons";
 
 function Login() {
   const history = useNavigate();
@@ -16,7 +17,7 @@ function Login() {
       .signInWithEmailAndPassword(email, password)
       .then((auth) => {
         if (auth) {
-          history("/");
+          history("/home");
         }
       })
       .catch((error) => alert(error.message));
@@ -36,32 +37,26 @@ function Login() {
   };
 
   return (
-    <div className="login">
-      <Link to={"/"}>
-        <img
-          className="login__logo"
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/220px-Amazon_logo.svg.png"
-        />
-      </Link>
-
+    <div className=" flex flex-col  items-center space-y-[80px]">
       <div className="login__container">
-        <h1>Sign in</h1>
         <form>
-          <h5>E-mail</h5>
+          <h5>E-mail address</h5>
           <input
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            className=" border border-b-black"
           />
 
-          <h5>Password</h5>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            className=" placeholder: border border-b-black text-black"
+            placeholder=""
           />
           <button
-            className="login__signInButton"
+            className=" bg-[#4A2876] w-full h-10"
             onClick={signIn}
             type="submit"
           >
@@ -69,14 +64,10 @@ function Login() {
           </button>
         </form>
 
-        <p>
-          By signing-in you agree to the AMAZON FRANK AWANI CLONE Conditions of
-          Use & Sale. Please see our Privacy Notice, our Cookies Notice and our
-          Interest-Based Ads Notice.
-        </p>
+        <p></p>
 
-        <button className="login__registerButton" onClick={register}>
-          Create Your Amazon Account
+        <button className="" onClick={register}>
+          Create Account
         </button>
       </div>
     </div>
